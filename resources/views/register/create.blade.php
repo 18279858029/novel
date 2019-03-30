@@ -39,7 +39,7 @@
            <h4 class="header green lighter bigger"> <i class="ace-icon fa fa-users blue"></i> 新用户注册 </h4> 
            <div class="space-6"></div> 
            <p> 输入详细信息: </p>  
-           <form> 
+           <form method="POST" action="{{ route('') }}"> 
             <fieldset> 
              <label class="block clearfix"> <span class="block input-icon input-icon-right"> <input type="email" class="form-control" placeholder="Email" /> <i class="ace-icon fa fa-envelope"></i> </span> </label> 
              <label class="block clearfix"> <span class="block input-icon input-icon-right"> <input type="text" class="form-control" placeholder="用户名" /> <i class="ace-icon fa fa-user"></i> </span> </label> 
