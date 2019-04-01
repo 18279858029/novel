@@ -1,9 +1,9 @@
 @extends('layouts.default')
-@section('title','添加管理员')
+@section('title','修改管理员')
 @section('breadcrumbs')
 <div class="breadcrumbs" id="breadcrumbs"> 
    <ul class="breadcrumb"> 
-    <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="index.html">添加管理员</a> </li> 
+    <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="index.html">管理员修改</a> </li> 
    </ul>
    <!-- /.breadcrumb --> 
    <!-- #section:basics/content.searchbox --> 
@@ -18,24 +18,26 @@
 @endsection
 @section('content')
   <div class="page-content">
+  @include('wrong._messages')
    <div class="page-content-area">
     <div class="row"> 
      <div class="col-xs-12">
      @include('wrong._errors') 
       <!-- PAGE CONTENT BEGINS --> 
-      <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.store') }}"> 
+      <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.update',$users->id) }}"> 
       {{ csrf_field() }}
+      {{ method_field('PATCH') }}
        <!-- #section:elements.form --> 
        <div class="form-group"> 
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 管理员名称：</label> 
         <div class="col-sm-9"> 
-         <input type="text" name="name" id="form-field-1" placeholder="管理员名称" class="col-xs-10 col-sm-5" value="{{ old('name') }}" /> 
+         <input type="text" name="name" id="form-field-1" placeholder="管理员名称" class="col-xs-10 col-sm-5" value="{{ $users->name }}" /> 
         </div> 
        </div> 
        <div class="form-group"> 
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">邮箱： </label> 
         <div class="col-sm-9"> 
-         <input type="email" name="email" id="form-field-1-1" placeholder="邮箱" class=" col-xs-10 col-sm-5" value="{{ old('email') }}" /> 
+         <input type="email" name="email" id="form-field-1-1" placeholder="邮箱" class=" col-xs-10 col-sm-5" value="{{ $users->email }}" /> 
         </div> 
        </div> 
        <div class="form-group"> 
@@ -56,7 +58,7 @@
         <label class="col-sm-3 control-label no-padding-right" for="form-field-2">状态： </label> 
           <div class="col-xs-3">
             <label>
-              <input name="status" class="ace ace-switch ace-switch-6" type="checkbox" value="{{ old('status') }}" />
+              <input name="status" class="ace ace-switch ace-switch-6" type="checkbox" value="{{ $users->status }}" />
               <span class="lbl"></span>
             </label>
           </div>
@@ -75,5 +77,5 @@
    <!-- /.row --> 
   </div>
   <!-- /.page-content-area --> 
-@endsection
 
+@endsection
